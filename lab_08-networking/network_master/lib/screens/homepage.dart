@@ -20,28 +20,54 @@ class HomePage extends StatelessWidget {
         title: Text(HomePage.routename),
       ),
       body: Center(
-        child: FutureBuilder(
-          future: _fetchPost(1),
-          builder: (context, snapshot) {
-            if(snapshot.hasData){
-              final post = snapshot.data as Post;
-               
-              return Text('${post.title}');
-            }else{
-              return CircularProgressIndicator();
-            }
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FutureBuilder(
+              future: _fetchPost(1),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final post = snapshot.data as Post;
+                  return Text('FETCHED POST: ${post.title}');
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+            SizedBox(height: 100,),
+            ElevatedButton(
+                onPressed: () async {
+                  await _createPost();
+                },
+                child: Text('Create a new post'))
+          ],
         ),
       ),
     );
   } //build
 
-  Future<Post> _fetchPost(int id) async {
+  //This method allows to fetch a post using the RESTful APIs
+  Future<Post?> _fetchPost(int id) async {
     final url = 'https://jsonplaceholder.typicode.com/posts/$id';
     final response = await http.get(Uri.parse(url));
     print(response.body);
+    return response.statusCode == 200 ? Post.fromJson(jsonDecode(response.body)): null;
+  } //_fetchPost
+
+  //This method allows to create a new post and send it to the RESTful API
+  Future<Post> _createPost() async {
+    final url = 'https://jsonplaceholder.typicode.com/posts';
+    final response = await http.post(Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'userId': 1,
+          'title': 'test',
+          'body': 'This is a test post',
+        }));
+    print(response.body);
     return Post.fromJson(jsonDecode(response.body));
-  }//_fetchPost
-  
+  } //_createPost
 
 } //HomePage

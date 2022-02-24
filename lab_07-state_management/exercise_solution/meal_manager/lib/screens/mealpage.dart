@@ -142,7 +142,7 @@ class _MealPageState extends State<MealPage> {
       widget.mealIndex == -1 ? widget.mealDB.addMeal(newMeal) : widget.mealDB.editMeal(widget.mealIndex, newMeal);
       Navigator.pop(context);
     }
-  } // _toHomepage
+  } // _validateAndSave
 
   //Utility method that deletes a meal entry.
   void _deleteAndPop(BuildContext context){

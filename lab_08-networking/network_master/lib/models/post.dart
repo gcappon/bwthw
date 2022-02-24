@@ -13,5 +13,6 @@ class Post {
       title: json['title'],
       body: json['body'],
     );
-  }
-}
+  }//Post.fromJson
+
+}//Post
