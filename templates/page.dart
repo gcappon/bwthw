@@ -20,4 +20,4 @@ class Page extends StatelessWidget {
     );
   } //build
 
-} //HomePage
+} //Page
