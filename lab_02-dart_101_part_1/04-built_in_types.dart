@@ -1,6 +1,5 @@
 void main(List<String> args) {
-  
-  // In Dart, everything is an object. However, Dart express a set of special types for common use.
+  // In Dart, everything is an object. However, Dart expresses a set of special types for common use.
 
   // --- Numbers
   int anInteger = 3; //Integer numbers (64-bit).
@@ -12,7 +11,8 @@ void main(List<String> args) {
   print(double.negativeInfinity); //Special constant 2: -inf
   print(double.infinity); //Special constant 3: inf
   print(double.minPositive); //Special constant 4: minimum representable number
-  print(double.maxFinite); //Special constant 5: maximum representable positive number
+  print(double
+      .maxFinite); //Special constant 5: maximum representable positive number
 
   // Parse a String to an int
   var one = int.parse('1');
@@ -30,7 +30,6 @@ void main(List<String> args) {
   String aDoubleAsString = aDouble.toString();
   assert(aDoubleAsString == '3.0');
 
-
   // --- Strings
 
   //To represent strings, Dart uses the String class.
@@ -43,20 +42,19 @@ void main(List<String> args) {
   //${expression}
   int a = 4;
   int b = 3;
-  print('a + b = ${a+b}');
+  print('a + b = ${a + b}');
 
   //Strings can be concatenated using +
   final hello = 'Hello';
   final world = 'world';
   print(hello + ' ' + world + '!');
 
-  //As you imagine, the String class has many handy methods and variables. Here's some examples:
+  //As you can imagine, the String class has many handy methods and variables. Here's some examples:
   final str = 'test string';
   print(str.length); //Gets the length of a string
   print(str.toUpperCase()); //Converts the whole string to upper case
   print(str.contains('str')); //Checks if a string contains a pattern
   print(str.indexOf('str')); //Tells where a pattern is within a string
-
 
   // --- Booleans
 
@@ -64,32 +62,38 @@ void main(List<String> args) {
   bool flag = true; //or false
   print(flag);
 
-
   // --- Lists
-  
-  //Arrays, in Dart, are represented as List objects. 
-  var listInferred = [1,2,3]; //Type inferred
-  List<int> listNotInferred = [1,2,3]; //Type explicited
+
+  //Arrays, in Dart, are represented as List objects.
+  var listInferred = [1, 2, 3]; //Type inferred
+  List<int> listNotInferred = [1, 2, 3]; //Type explicited
   assert(listInferred == listNotInferred);
 
   //List elements can be accessed by index (they start from 0)
   print(listInferred[1]); //This will print '2'
 
   //Length of a list can be accessed via the length instance variable
-  print(listInferred.length); //This will print '3' 
+  print(listInferred.length); //This will print '3'
 
   //As strings, Dart comes with handy features for lists
   print(listInferred.reversed); //This will obtain the list in reversed order
   listInferred.add(4); //This will add a 4 to the tail of the list
-  listInferred = [0, ...listInferred]; //This will add a 0 to the head of the list (using the spread operator)
+  listInferred = [
+    0,
+    ...listInferred
+  ]; //This will add a 0 to the head of the list (using the spread operator)
   print(listInferred);
-  
 
-  // --- Maps 
+  //A useful method of List is map(). It takes as input a function that applies “something” element-by-element to the given List. 
+  final mappedList = [1,2,3].map((element) {
+    return element * 2;
+  });
+  print('${mappedList}'); //This will print [2,4,6]
+
+  // --- Maps
 
   //A useful collection type in Dart is the Map type. A Map is an object that associates keys and values.
   //Each key occurs only once, values can occur multiple times.
-
   var mapInferred = {
     2: 'helium',
     10: 'neon',
@@ -101,7 +105,7 @@ void main(List<String> args) {
     18: 'argon',
   }; //Type not inferred
   assert(mapInferred == mapNotInferred);
-  
+
   //Elements of a Map can be accessed via the key.
   print(mapInferred[2]); //This will print 'helium'
 
@@ -109,12 +113,12 @@ void main(List<String> args) {
   mapInferred[1] = 'hydrogen';
   print(mapInferred);
 
-  //Values of a Map can be overwritten 
+  //Values of a Map can be overwritten
   mapInferred[1] = 'H';
   print(mapInferred);
 
   //Handy features are also present for Maps
   print(mapInferred.length); //This will print the length of the Map
-  print(mapInferred.containsKey(2)); //This will check is a key exists in the Map
-  
-}// main
+  print(
+      mapInferred.containsKey(2)); //This will check if a key exists in the Map
+} // main

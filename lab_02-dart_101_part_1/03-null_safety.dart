@@ -17,7 +17,7 @@ void main(List<String> args) {
   //is not null. It will throw an exception if you are wrong.
   int c = 0;
   try{
-    print('Trying to assing the value of b to c.');
+    print('Trying to assign the value of b to c.');
     c = b!;
   } catch (e){
     print('b variable was null!');

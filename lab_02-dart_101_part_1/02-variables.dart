@@ -1,8 +1,8 @@
 void main(List<String> args) {
   
   // var can be used to create and initialize a variable
-
   var number = 42; // number contains a reference to a number object with value 42
+
   print(number);
   print('${number}'); // ${variableName} can be used inside a string to display
                       // the value of a variable in a specific place.
@@ -16,7 +16,7 @@ void main(List<String> args) {
   const pi = 3.14;
   print(pi);
 
-  // The type of variables is inferred! Type can be also specified.
+  // The type of variables is inferred! However, types can be also specified like here.
   final String anotherName = 'Jack'; //This will be a constant String
   print(anotherName);
 
