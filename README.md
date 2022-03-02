@@ -7,5 +7,5 @@ Master's degree in Bioengineering, Department of Information Engineering (DEI), 
 
 For any problems, issues, or suggestions, write us: 
 
-- Giacomo Cappon: giacomo.cappon@unipd.it
-- Luca Cossu: luca.cossu@phd.unipd.it
+- Giacomo Cappon (Professor): giacomo.cappon@unipd.it
+- Luca Cossu (Tutor): luca.cossu@phd.unipd.it
