@@ -121,7 +121,7 @@ class _MealPageState extends State<MealPage> {
         TimeOfDay? pickedTime = await showTimePicker(
           context: context,
           initialTime: TimeOfDay(
-              hour: DateTime.now().hour, minute: DateTime.now().minute),
+              hour: _selectedDate.hour, minute: _selectedDate.minute),
         );
         return pickedTime != null ? value.add(
               Duration(hours: pickedTime.hour, minutes: pickedTime.minute)) : null;
