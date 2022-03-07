@@ -8,11 +8,11 @@ void main(List<String> args) {
                       // the value of a variable in a specific place.
                       // SPOILER: this uses the toString() method.
 
-  // final can be used to create and initialize a constant (run-time level).
+  // final can be used to create and initialize a constant (run-time).
   final name = 'Bob';
   print(name);
 
-  // const can be used to create and initialize a constant (compile level).
+  // const can be used to create and initialize a constant (compile-time).
   const pi = 3.14;
   print(pi);
 
