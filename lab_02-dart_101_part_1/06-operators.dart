@@ -49,7 +49,7 @@ void main(List<String> args) {
 
   // --- Type tester
   double c = 0;
-  print(c is double); //This will print 'false'
-  print(c is! double); //This will print 'true'
+  print(c is double); //This will print 'true'
+  print(c is! double); //This will print 'false'
 
 }//main
