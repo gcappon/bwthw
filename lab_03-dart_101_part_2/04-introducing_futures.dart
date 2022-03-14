@@ -1,7 +1,7 @@
 //An asyncronous function
-Future<void> fetchUserOrder() {
+void fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
-  return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
+  Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
 }//fetchUserOrder
 
 //Note that main is an asynchronous function now since it performs at least one asyncronous operation
