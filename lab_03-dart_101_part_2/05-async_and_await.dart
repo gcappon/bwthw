@@ -1,7 +1,7 @@
 //A (fixed) asyncronous function
 Future<void> fetchUserOrder() async {
   // Imagine that this function is fetching user info from another service or database.
-  return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
+  await Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
 }//fetchUserOrder
 
 //Note that main is a (fixed) asynchronous function now since it performs at least one asyncronous operation
