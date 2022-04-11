@@ -12,7 +12,7 @@ class MessagePage extends StatelessWidget {
     print('${MessagePage.routename} built');
 
     //Get the value provided by the HomePage
-    final message = ModalRoute.of(context)!.settings.arguments! as String;
+    final args = ModalRoute.of(context)!.settings.arguments! as Map<String,String>;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +22,7 @@ class MessagePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('This is the message: $message'),
+            Text('This is the message: ${args['message']}'),
             ElevatedButton(
               child: Text('To the home'),
               onPressed: () {
