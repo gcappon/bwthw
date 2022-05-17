@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,29 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  //This state (ephemeral) variable allows to store the value of count.
-  int count = 0;
-
-  @override
-  initState() {
-    super.initState();
-
-    //Here we initialize the value of count using an utility method. 
-    //Note that we need to do that since we cannot use await inside initState(): we are overriding
-    //a method, modifying its signature would mean that we are defining a new method.
-    _initCount();
-  }//initState
-
-  //This utility method allows to initialize the value of count when the home page is rendered the first time
-  void _initCount() async{
-    //Get the instance of SharedPreferences
-    final sp = await SharedPreferences.getInstance();
-    //Use setState to properly initialize the value of count. 
-    setState(() {
-      sp.getInt('count') == null ? count = 0 : count = sp.getInt('count')!;
-    });
-  }//_initCount 
-
   @override
   Widget build(BuildContext context) {
     print('${HomePage.routename} built');
@@ -48,7 +24,25 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Count = $count', style: TextStyle(fontSize: 25),),
+            FutureBuilder(
+              future: SharedPreferences.getInstance(),
+              builder: ((context, snapshot) {
+                if(snapshot.hasData){
+                  final sp = snapshot.data as SharedPreferences;
+                  if(sp.getInt('count') == null){
+                    sp.setInt('count', 0);
+                    return Text('Count = 0', style: TextStyle(fontSize: 25),);
+                  }
+                  else{
+                    final count = sp.getInt('count')!;
+                    return Text('Count = $count', style: TextStyle(fontSize: 25),);
+                  }
+                }
+                else{
+                  return CircularProgressIndicator();
+                }
+              }),
+            ),
             ElevatedButton(onPressed: () => _addOne(), child: Text('Press to increment the counter')),
             ElevatedButton(onPressed: () => _removeCount(), child: Text('Press to remove count from SharedPreferences'))
           ],
@@ -61,8 +55,12 @@ class _HomePageState extends State<HomePage> {
   void _addOne() async{
     final sp = await SharedPreferences.getInstance();
     setState(() {
-      count++;
-      sp.setInt('count', count);
+      var count = sp.getInt('count');
+      if(count != null){
+        count++;
+        sp.setInt('count', count);
+      }
+      
     });
   }//_addOne
 
@@ -70,6 +68,9 @@ class _HomePageState extends State<HomePage> {
   void _removeCount() async{
     final sp = await SharedPreferences.getInstance();
     sp.remove('count');
+    setState(() {
+      
+    });
   }//_removeCount
 
 } //HomePage
