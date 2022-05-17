@@ -55,11 +55,11 @@ class HomePage extends StatelessWidget {
   } //_fetchPost
 
   //This method allows to create a new post and send it to the RESTful API
-  Future<Post> _createPost() async {
+  Future<Post?> _createPost() async {
     final url = 'https://jsonplaceholder.typicode.com/posts';
     final response = await http.post(Uri.parse(url),
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
         },
         body: jsonEncode(<String, dynamic>{
           'userId': 1,
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
           'body': 'This is a test post',
         }));
     print(response.body);
-    return Post.fromJson(jsonDecode(response.body));
+    return response.statusCode == 200 ? Post.fromJson(jsonDecode(response.body)) : null;
   } //_createPost
 
 } //HomePage
