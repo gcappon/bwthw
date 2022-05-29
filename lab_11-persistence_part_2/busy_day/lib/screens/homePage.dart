@@ -30,10 +30,11 @@ class HomePage extends StatelessWidget {
           child: Icon(Icons.add)),
       body: Center(
         child:
-            //We will show the todo table with a ListView.
-            //To do so, we use a Consumer of DatabaseRepository in order to rebuild the widget tree when
-            //entries are deleted or created.
-            Consumer<DatabaseRepository>(builder: (context, dbr, child) {
+          //We will show the todo table with a ListView.
+          //To do so, we use a Consumer of DatabaseRepository in order to rebuild the widget tree when
+          //entries are deleted or created.
+          Consumer<DatabaseRepository>(
+            builder: (context, dbr, child) {
           //The logic is to query the DB for the entire list of Todo using dbr.findAllTodos()
           //and then populate the ListView accordingly.
           //We need to use a FutureBuilder since the result of dbr.findAllTodos() is a Future.
