@@ -4,15 +4,14 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class Page extends StatelessWidget {
   Page({Key? key}) : super(key: key);
 
-  static const route = '/';
-  static const routename = 'Page';
+  static const pageName = 'Page';
   
   @override
   Widget build(BuildContext context) {
-    print('${Page.routename} built');
+    print('${Page.pageName} built');
     return Scaffold(
       appBar: AppBar(
-        title: Text(Page.routename),
+        title: Text(Page.pageName),
       ),
       body: Center(
         child: Text('Hello, world!'),
