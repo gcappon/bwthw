@@ -9,3 +9,4 @@ For any problems, issues, or suggestions, write us:
 
 - Giacomo Cappon (Professor): giacomo.cappon@unipd.it
 - Luca Cossu (Tutor): luca.cossu@phd.unipd.it
+- Michele Atzeni (Tutor): michele.atzeni@phd.unipd.it
