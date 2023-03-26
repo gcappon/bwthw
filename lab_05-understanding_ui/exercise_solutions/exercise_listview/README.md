@@ -1,20 +1,16 @@
 # exercise_listview
 
-This is the solution of exercise 05.02/03/04/05.
+A new Flutter project.
 
-By default, if you run it, you will see the solution of exercise 05.05.
+## Getting Started
 
-* To see the solution of exercise 05.02:
-    * Rename libs/main.dart to libs/main_exercise05_04_05.dart;
-    * Rename libs/main_exercise05_02_03.dart to libs/main.dart;
-    * Uncomment line 26 and comment line 27;
-    * Run it.
-* To see the solution of exercise 05.03:
-    * Rename libs/main.dart to libs/main_exercise05_04_05.dart;
-    * Rename libs/main_exercise05_02_03.dart to libs/main.dart;
-    * Run it.
-* To see the solution of exercise 05.04:
-    * Run it.
-* To see the solution of exercise 05.05:
-    * Run it;
-    * Try to tap the FloatingActionButton.
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
