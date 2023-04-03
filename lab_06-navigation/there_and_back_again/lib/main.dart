@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:there_and_back_again/screens/homepage.dart';
+import 'package:there_and_back_again/screens/homePage.dart';
 import 'package:there_and_back_again/screens/messagePage.dart';
 import 'package:there_and_back_again/screens/pickValuePage.dart';
 import 'package:there_and_back_again/screens/profilePage.dart';
