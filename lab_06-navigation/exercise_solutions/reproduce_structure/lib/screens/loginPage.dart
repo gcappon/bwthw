@@ -4,7 +4,6 @@ import 'package:reproduce_structure/screens/homePage.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routename = 'LoginPage';
 
   @override
@@ -21,7 +20,7 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               child: Text('To the HomePage'),
               onPressed: () {
-                Navigator.pushNamed(context, HomePage.route);
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePage())));
               },
             ),
           ],

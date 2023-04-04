@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PickValuePage extends StatelessWidget {
-  const PickValuePage({Key? key}) : super(key: key);
+  PickValuePage({Key? key}) : super(key: key);
 
-  static const route = '/pickValue/';
   static const routename = 'PickValuePage';
 
   @override

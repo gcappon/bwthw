@@ -4,7 +4,6 @@ import 'package:reproduce_structure/screens/editProfilePage.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
-  static const route = '/profile/';
   static const routename = 'ProfilePage';
 
   @override
@@ -35,7 +34,7 @@ class ProfilePage extends StatelessWidget {
 
   void _toEditProfilePage(BuildContext context){
     //Push the EditProfilePage
-    Navigator.pushNamed(context, EditProfilePage.route);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
   }//_toEditProfilePage
 
 } //ProfilePage

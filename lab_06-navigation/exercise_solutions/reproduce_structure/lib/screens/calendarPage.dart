@@ -4,7 +4,6 @@ import 'package:reproduce_structure/screens/editEventPage.dart';
 class CalendarPage extends StatelessWidget {
   const CalendarPage({Key? key}) : super(key: key);
 
-  static const route = '/calendar/';
   static const routename = 'CalendarPage';
 
   @override
@@ -38,7 +37,7 @@ class CalendarPage extends StatelessWidget {
 
   void _toEditEventPage(BuildContext context){
     //Push the EditEventPage
-    Navigator.pushNamed(context, EditEventPage.route);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => EditEventPage()));
   }//_toEditEventPage
 
 } //CalendarPage

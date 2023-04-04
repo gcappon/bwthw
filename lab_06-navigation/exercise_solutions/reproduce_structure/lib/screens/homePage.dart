@@ -5,7 +5,6 @@ import 'package:reproduce_structure/screens/profilePage.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  static const route = '/home/';
   static const routename = 'Homepage';
 
   @override
@@ -53,14 +52,14 @@ class HomePage extends StatelessWidget {
     //Pop the drawer first 
     Navigator.pop(context);
     //Then push the ProfilePage
-    Navigator.pushNamed(context, ProfilePage.route);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
   }//_toProfilePage
 
   void _toCalendarPage(BuildContext context){
     //Pop the drawer first 
     Navigator.pop(context);
     //Then push the CalendarPage
-    Navigator.pushNamed(context, CalendarPage.route);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CalendarPage()));
   }//_toCalendarPage
 
   void _toLoginPage(BuildContext context){

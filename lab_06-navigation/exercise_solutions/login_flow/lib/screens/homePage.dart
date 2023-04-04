@@ -4,7 +4,6 @@ import 'package:login_flow/screens/loginPage.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  static const route = '/home/';
   static const routename = 'Homepage';
 
   @override
@@ -42,7 +41,7 @@ class HomePage extends StatelessWidget {
     //Pop the drawer first 
     Navigator.pop(context);
     //Then pop the HomePage
-    Navigator.of(context).pushReplacementNamed(LoginPage.route);
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }//_toCalendarPage
 
 } //HomePage

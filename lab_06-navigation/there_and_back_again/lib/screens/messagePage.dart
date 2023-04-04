@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MessagePage extends StatelessWidget {
-  const MessagePage({Key? key}) : super(key: key);
+  MessagePage({Key? key, required this.message}) : super(key: key);
   
-  static const route = '/message/';
+  final String message;
+  
   static const routename = 'MessagePage';
 
   @override
@@ -12,7 +13,7 @@ class MessagePage extends StatelessWidget {
     print('${MessagePage.routename} built');
 
     //Get the value provided by the HomePage
-    final args = ModalRoute.of(context)!.settings.arguments! as Map<String,String>;
+    //final args = ModalRoute.of(context)!.settings.arguments! as Map<String,String>;
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +23,7 @@ class MessagePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('This is the message: ${args['message']}'),
+            Text('This is the message: $message'),
             ElevatedButton(
               child: Text('To the home'),
               onPressed: () {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({Key? key}) : super(key: key);
 
-  static const route = '/profile/edit/';
   static const routename = 'EditProfilePage';
 
   @override

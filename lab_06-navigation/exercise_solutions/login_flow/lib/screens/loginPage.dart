@@ -5,7 +5,6 @@ import 'package:flutter_login/flutter_login.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routename = 'LoginPage';
 
   Future<String> _loginUser(LoginData data) async {
@@ -33,7 +32,7 @@ class LoginPage extends StatelessWidget {
       onSignup: _signUpUser,
       onRecoverPassword: _recoverPassword,
       onSubmitAnimationCompleted: () async{
-        Navigator.of(context).pushReplacementNamed(HomePage.route);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
       },
     );
   } // build
