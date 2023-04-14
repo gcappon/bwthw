@@ -17,24 +17,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MealDB(),
       child: MaterialApp(
         //This specifies the entrypoint
-        initialRoute: HomePage.route,
-        //Here, I'm demonstrating another way to manage Navigation. This approach can be handy when you need to
-        //pass data to a route directly to its constructor and you want to continue to use pushNamed().
-        onGenerateRoute: (settings) {
-          if (settings.name == HomePage.route) {
-            return MaterialPageRoute(builder: (context) {
-              return HomePage();
-            });
-          } else if (settings.name == MealPage.route) {
-            final args = settings.arguments as Map;
-            return MaterialPageRoute(builder: (context) {
-              return MealPage(
-                  mealIndex: args['mealIndex'], mealDB: args['mealDB']);
-            });
-          } else {
-            return null;
-          } //if-else
-        },//onGenerateRoute
+        home: HomePage(),
       ),
     );
   } //build

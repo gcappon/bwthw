@@ -3,11 +3,11 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:provider/provider.dart';
 import 'package:shopper/models/cart.dart';
 import 'package:shopper/models/catalog.dart';
+import 'package:shopper/screens/cartpage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routename = 'Homepage';
 
   final Catalog catalog = Catalog();
@@ -40,6 +40,7 @@ class HomePage extends StatelessWidget {
   } //build
 
   void _toCartPage(BuildContext context) {
-    Navigator.pushNamed(context, '/cart');
-  }
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+  }//_toCartPage
+  
 } //HomePage

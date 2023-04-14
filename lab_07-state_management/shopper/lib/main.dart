@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopper/models/cart.dart';
-import 'package:shopper/screens/cartPage.dart';
 import 'package:shopper/screens/homepage.dart';
 
 void main() {
@@ -18,12 +17,7 @@ class MyApp extends StatelessWidget {
       create: (context) => Cart(),
       child: MaterialApp(
         //This specifies the app entrypoint
-        initialRoute: '/',
-        //This maps names to the set of routes within the app
-        routes: {
-          HomePage.route: (context) => HomePage(),
-          CartPage.route: (context) => CartPage(),
-        },
+        home: HomePage(),
       ),
     );
   } //build

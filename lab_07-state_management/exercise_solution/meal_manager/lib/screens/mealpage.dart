@@ -19,7 +19,6 @@ class MealPage extends StatefulWidget {
   //MealPage constructor
   MealPage({Key? key, required this.mealDB, required this.mealIndex}) : super(key: key);
 
-  static const route = '/meal';
   static const routeDisplayName = 'Meal page';
 
   @override
@@ -46,7 +45,7 @@ class _MealPageState extends State<MealPage> {
     super.initState();
   } // initState
 
-  //Remember that form controllers need to be manually disposed. So, here we need also to override the dispose() method.
+  //Form controllers need to be manually disposed. So, here we need also to override the dispose() method.
   @override
   void dispose() {
     _choController.dispose();

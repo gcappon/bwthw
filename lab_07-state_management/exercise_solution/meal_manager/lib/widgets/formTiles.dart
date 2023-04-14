@@ -116,7 +116,7 @@ class FormDateTile extends ListTile {
             child: Container(
               alignment: Alignment.centerLeft,
               width: screenSize.width / 1.5,
-              child: FlatButton(
+              child: TextButton(
                 child: Text(dateFormat.format(date)),
                 onPressed: onPressed,
               ),

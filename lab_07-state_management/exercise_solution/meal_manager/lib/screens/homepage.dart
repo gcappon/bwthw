@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routeDisplayName = 'Homepage';
 
   @override
@@ -36,7 +35,7 @@ class HomePage extends StatelessWidget {
                       //1. We are using the Card widget to wrap each ListTile to make the UI prettier;
                       //2. I'm using DateTime to manage dates;
                       //3. I'm using a custom DateFormats to format the DateTime (take a look at the utils/formats.dart file);
-                      //4. Improving UX adding a leading and a trailing to the ListTile
+                      //4. Improving UI/UX adding a leading and a trailing to the ListTile
                       return Card(
                         elevation: 5,
                         child: ListTile(
@@ -64,6 +63,6 @@ class HomePage extends StatelessWidget {
 
   //Utility method to navigate to MealPage
   void _toMealPage(BuildContext context, MealDB mealDB, int mealIndex) {
-    Navigator.pushNamed(context, MealPage.route, arguments: {'mealIndex': mealIndex, 'mealDB': mealDB});
+    Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(mealDB: mealDB, mealIndex: mealIndex,)));
   } //_toMealPage
 } //HomePage

@@ -5,7 +5,6 @@ import 'package:shopper/models/cart.dart';
 class CartPage extends StatelessWidget {
   CartPage({Key? key}) : super(key: key);
 
-  static const route = '/cart';
   static const routename = 'Cartpage';
 
   @override
