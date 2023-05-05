@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routename = 'HomePage';
 
   @override
