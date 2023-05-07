@@ -52,8 +52,8 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   final sp = await SharedPreferences.getInstance();
-                  final access = await sp.getString('access');
-                  final refresh = await sp.getString('refresh');
+                  final access = sp.getString('access');
+                  final refresh = sp.getString('refresh');
                   final message = access == null
                       ? 'No stored tokens'
                       : 'access: $access; refresh: $refresh';
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   final sp = await SharedPreferences.getInstance();
-                  final refresh = await sp.getString('refresh');
+                  final refresh = sp.getString('refresh');
                   final message;
                   if (refresh == null) {
                     message = 'No stored tokens';
@@ -104,38 +104,64 @@ class HomePage extends StatelessWidget {
 
   //This method allows to check if the IMPACT backend is up
   Future<bool> _isImpactUp() async {
+
+    //Create the request
     final url = Impact.baseUrl + Impact.pingEndpoint;
+
+    //Get the response
+    print('Calling: $url');
     final response = await http.get(Uri.parse(url));
+
+    //Just return if the status code is OK
     return response.statusCode == 200;
   } //_isImpactUp
 
   //This method allows to obtain the JWT token pair from IMPACT and store it in SharedPreferences
   Future<int> _getAndStoreTokens() async {
+
+    //Create the request
     final url = Impact.baseUrl + Impact.tokenEndpoint;
     final body = {'username': Impact.username, 'password': Impact.password};
+
+    //Get the response
+    print('Calling: $url');
     final response = await http.post(Uri.parse(url), body: body);
+
+    //If response is OK, decode it and store the tokens. Otherwise do nothing.
     if (response.statusCode == 200) {
       final decodedResponse = jsonDecode(response.body);
       final sp = await SharedPreferences.getInstance();
-      sp.setString('access', decodedResponse['access']);
-      sp.setString('refresh', decodedResponse['refresh']);
+      await sp.setString('access', decodedResponse['access']);
+      await sp.setString('refresh', decodedResponse['refresh']);
     } //if
+
+    //Just return the status code
     return response.statusCode;
   } //_getAndStoreTokens
 
-  //This method allows to obtain the JWT token pair from IMPACT and store it in SharedPreferences
+  //This method allows to refrsh the stored JWT in SharedPreferences
   Future<int> _refreshTokens() async {
+
+    //Create the request 
     final url = Impact.baseUrl + Impact.refreshEndpoint;
     final sp = await SharedPreferences.getInstance();
-    final refresh = await sp.getString('refresh');
+    final refresh = sp.getString('refresh');
     final body = {'refresh': refresh};
+
+    //Get the response
+    print('Calling: $url');
     final response = await http.post(Uri.parse(url), body: body);
+
+    //If the response is OK, set the tokens in SharedPreferences to the new values
     if (response.statusCode == 200) {
       final decodedResponse = jsonDecode(response.body);
       final sp = await SharedPreferences.getInstance();
-      sp.setString('access', decodedResponse['access']);
-      sp.setString('refresh', decodedResponse['refresh']);
+      await sp.setString('access', decodedResponse['access']);
+      await sp.setString('refresh', decodedResponse['refresh']);
     } //if
+
+    //Just return the status code
     return response.statusCode;
+    
   } //_refreshTokens
 } //HomePage
