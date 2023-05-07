@@ -7,8 +7,8 @@ class Impact{
   
   static String stepsEndpoint = 'data/v1/steps/patients/';
 
-  static String username = 'zbV396qxIB';
-  static String password = '12345678!';
+  static String username = '<YOUR_USERNAME>';
+  static String password = '<YOUR_PASSWORD>';
 
   static String patientUsername = 'Jpefaq6m58';
 }//Impact
