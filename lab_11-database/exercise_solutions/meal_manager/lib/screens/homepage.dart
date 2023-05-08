@@ -75,6 +75,6 @@ class HomePage extends StatelessWidget {
 
   //Utility method to navigate to MealPage
   void _toMealPage(BuildContext context, Meal? meal) {
-    Navigator.pushNamed(context, MealPage.route, arguments: {'meal': meal});
+    Navigator.push(context, MaterialPageRoute(builder: (context) => MealPage(meal: meal,)));
   } //_toMealPage
 } //HomePage

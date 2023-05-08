@@ -18,7 +18,6 @@ class MealPage extends StatefulWidget {
   MealPage({Key? key, required this.meal})
       : super(key: key);
 
-  static const route = '/meal';
   static const routeDisplayName = 'Meal page';
 
   @override

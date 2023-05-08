@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  static const route = '/';
   static const routename = 'HomePage';
 
   @override

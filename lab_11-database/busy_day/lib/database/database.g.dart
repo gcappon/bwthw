@@ -63,8 +63,11 @@ class _$AppDatabase extends AppDatabase {
 
   TodoDao? _todoDaoInstance;
 
-  Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback? callback]) async {
+  Future<sqflite.Database> open(
+    String path,
+    List<Migration> migrations, [
+    Callback? callback,
+  ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
       version: 1,
       onConfigure: (database) async {
@@ -97,19 +100,14 @@ class _$AppDatabase extends AppDatabase {
 }
 
 class _$TodoDao extends TodoDao {
-  _$TodoDao(this.database, this.changeListener)
-      : _queryAdapter = QueryAdapter(database, changeListener),
-        _todoInsertionAdapter = InsertionAdapter(
-            database,
-            'Todo',
-            (Todo item) => <String, Object?>{'id': item.id, 'name': item.name},
-            changeListener),
-        _todoDeletionAdapter = DeletionAdapter(
-            database,
-            'Todo',
-            ['id'],
-            (Todo item) => <String, Object?>{'id': item.id, 'name': item.name},
-            changeListener);
+  _$TodoDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database),
+        _todoInsertionAdapter = InsertionAdapter(database, 'Todo',
+            (Todo item) => <String, Object?>{'id': item.id, 'name': item.name}),
+        _todoDeletionAdapter = DeletionAdapter(database, 'Todo', ['id'],
+            (Todo item) => <String, Object?>{'id': item.id, 'name': item.name});
 
   final sqflite.DatabaseExecutor database;
 
@@ -126,16 +124,6 @@ class _$TodoDao extends TodoDao {
     return _queryAdapter.queryList('SELECT * FROM Todo',
         mapper: (Map<String, Object?> row) =>
             Todo(row['id'] as int?, row['name'] as String));
-  }
-
-  @override
-  Stream<Todo?> findTodoById(int id) {
-    return _queryAdapter.queryStream('SELECT * FROM Todo WHERE id = ?1',
-        mapper: (Map<String, Object?> row) =>
-            Todo(row['id'] as int?, row['name'] as String),
-        arguments: [id],
-        queryableName: 'Todo',
-        isView: false);
   }
 
   @override
