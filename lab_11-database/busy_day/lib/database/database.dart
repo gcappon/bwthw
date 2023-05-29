@@ -7,7 +7,7 @@ import 'package:sqflite/sqflite.dart' as sqflite;
 import 'daos/todoDao.dart';
 import 'entities/todo.dart';
 
- //The generated code will be in database.g.dart
+//The generated code will be in database.g.dart
 part 'database.g.dart';
 
 //Here we are saying that this is the first version of the Database and it has just 1 entity, i.e., Todo
