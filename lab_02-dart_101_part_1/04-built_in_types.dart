@@ -67,7 +67,7 @@ void main(List<String> args) {
   //Arrays, in Dart, are represented as List objects.
   var listInferred = [1, 2, 3]; //Type inferred
   List<int> listNotInferred = [1, 2, 3]; //Type explicited
-  assert(listInferred == listNotInferred);
+  assert(listInferred != listNotInferred); // Remember that they are not equal!
 
   //List elements can be accessed by index (they start from 0)
   print(listInferred[1]); //This will print '2'
@@ -104,7 +104,7 @@ void main(List<String> args) {
     10: 'neon',
     18: 'argon',
   }; //Type not inferred
-  assert(mapInferred == mapNotInferred);
+  assert(mapInferred != mapNotInferred); // Remember that they are not equal!
 
   //Elements of a Map can be accessed via the key.
   print(mapInferred[2]); //This will print 'helium'

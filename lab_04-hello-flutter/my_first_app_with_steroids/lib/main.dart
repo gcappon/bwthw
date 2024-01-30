@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }//main
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
-      appBar: AppBar(title: const Text('Welcome to Flutter'),),
-      body: const Center(
+      appBar: AppBar(title: Text('Welcome to Flutter'),),
+      body: Center(
         child: RandomHello(),
       ),),
     );
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
 
 class RandomHello extends StatefulWidget{
-  const RandomHello({Key? key}) : super(key: key);
+  RandomHello({Key? key}) : super(key: key);
   
   @override
   _RandomHelloState createState() => _RandomHelloState();
@@ -45,7 +45,7 @@ class _RandomHelloState extends State<RandomHello>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Hello, $_word!'),
-            ElevatedButton(onPressed: _changeWord, child: const Text('Press me')),
+            ElevatedButton(onPressed: _changeWord, child: Text('Press me')),
           ],
         );
   }//build 

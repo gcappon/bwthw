@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.my_first_app_with_steroids">
-   <application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="my_first_app_with_steroids"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
