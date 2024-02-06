@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.red),
       home: Scaffold(
-        appBar: AppBar(title: Text('DEI - UNIPD'),),
+        appBar: AppBar(title: Text('DEI - UNIPD'), backgroundColor: Colors.red),
         floatingActionButton: FloatingActionButton(
           elevation: 10,
-          child: Icon(Icons.favorite_border),
+          backgroundColor: Colors.red,
+          child: Icon(Icons.favorite_border, ),
           onPressed: (){},
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

@@ -24,32 +24,32 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          actions: const [
+          actions: [
             Icon(
               Icons.done,
             ),
             Icon(Icons.error)
           ],
-          title: const Text('The AppBar'),
+          title: Text('The AppBar'),
         ),
         body: 
           _exercise050405(),
         drawer: Drawer(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text('An option'),
               Text('Another option'),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+          child: Icon(Icons.add),
           onPressed: () {
             _addTile();
           },
         ),
-        bottomNavigationBar: BottomNavigationBar(items: const [
+        bottomNavigationBar: BottomNavigationBar(items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.supervisor_account),
             label: 'Profile',

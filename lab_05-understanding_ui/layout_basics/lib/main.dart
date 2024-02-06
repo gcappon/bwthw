@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }//main
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
 
   Widget _example14() => UnconstrainedBox(child: Container(color: Colors.red, width: 4000, height: 50,),);
 
-  Widget _example18() => const FittedBox(child: Text('Some Example Text.', style: TextStyle(fontSize: 16)),);
+  Widget _example18() => FittedBox(child: Text('Some Example Text.', style: TextStyle(fontSize: 16)),);
 
-  Widget _example19() => const Center(child: FittedBox(child: Text('Some Example Text', style: TextStyle(fontSize: 16),),),);
+  Widget _example19() => Center(child: FittedBox(child: Text('Some Example Text', style: TextStyle(fontSize: 16),),),);
 
 }//MyApp
