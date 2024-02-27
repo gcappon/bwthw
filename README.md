@@ -9,7 +9,7 @@ Join the course Discord server to get in touch and ask questions: [https://disco
 
 # Contacts
 
-For any problems, issues, or suggestions, write us: 
+For any problems, issues, or suggestions, contact us: 
 
 - Giacomo Cappon (Professor): giacomo.cappon@unipd.it
 - Luca Cossu (Tutor): luca.cossu@phd.unipd.it
