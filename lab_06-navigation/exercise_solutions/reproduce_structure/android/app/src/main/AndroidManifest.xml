@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.reproduce_structure">
-   <application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="reproduce_structure"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

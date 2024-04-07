@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: 
-        _example1(),
+        //_example1(),
         //_example2(),
         //_example3(),
         //_example6(),
-        //_example7(),
+        _example7(),
         //_example14(),
         //_example18(),
         //_example19(),
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   
   Widget _example6() => Center(child: Container(color: Colors.red,),);
 
-  Widget _example7() => Center(child: Container(color: Colors.red, child: Container(color: Colors.green, width: 30,height: 30,),),);
+  Widget _example7() => Center(child: Container(color: Colors.red, width: 100, height: 100, child: Container(color: Colors.green, width: 300,height: 30,),),);
 
   Widget _example14() => UnconstrainedBox(child: Container(color: Colors.red, width: 4000, height: 50,),);
 
