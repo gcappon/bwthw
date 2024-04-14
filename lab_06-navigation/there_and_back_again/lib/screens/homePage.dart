@@ -4,7 +4,7 @@ import 'package:there_and_back_again/screens/pickValuePage.dart';
 import 'package:there_and_back_again/screens/profilePage.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   static const routename = 'Homepage';
 
@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
               },
             ),
+
             ElevatedButton(
               child: Text('To the message'),
               onPressed: () {

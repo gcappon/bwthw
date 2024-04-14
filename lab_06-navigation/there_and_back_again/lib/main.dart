@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:there_and_back_again/screens/homePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 } //main
 
 class MyApp extends StatelessWidget {
