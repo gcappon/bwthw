@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:meal_manager/models/mealDB.dart';
-import 'package:meal_manager/screens/mealpage.dart';
 import 'package:meal_manager/screens/homepage.dart';
 
 void main() {

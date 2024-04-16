@@ -4,7 +4,7 @@ import 'package:shopper/models/cart.dart';
 import 'package:shopper/screens/homepage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 } //main
 
 class MyApp extends StatelessWidget {

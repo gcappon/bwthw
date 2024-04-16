@@ -1,6 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.meal_manager">
-   <application
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="meal_manager"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
