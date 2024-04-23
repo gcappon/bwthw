@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:login_flow/screens/loginpage.dart';
+
+import 'package:login_flow/screens/loginPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  static const routename = 'Homepage';
-
   @override
   Widget build(BuildContext context) {
-    print('${HomePage.routename} built');
     return Scaffold(
       appBar: AppBar(
-        title: Text(HomePage.routename),
+        title: Text('HomePage'),
       ),
       body: Center(
           child: Text('login_flow'),
@@ -22,9 +20,6 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
               child: Text('login_flow'),
             ),
             ListTile(
@@ -39,9 +34,9 @@ class HomePage extends StatelessWidget {
   } //build
 
   void _toLoginPage(BuildContext context) async{
-    //Unset the 'username' filed in SharedPreference 
-    final sp = await SharedPreferences.getInstance();
-    sp.remove('username');
+    //Get the instance and remove isUserLogged flag from shared preferences 
+    final sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.remove('isUserLogged');
 
     //Pop the drawer first 
     Navigator.pop(context);

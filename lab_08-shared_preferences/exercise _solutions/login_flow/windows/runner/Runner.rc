@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "login_flow" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "login_flow" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "login_flow.exe" "\0"
             VALUE "ProductName", "login_flow" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
