@@ -11,15 +11,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  static const routename = 'HomePage';
-
   @override
   Widget build(BuildContext context) {
-    print('${HomePage.routename} built');
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(HomePage.routename),
+        title: Text('HomePage'),
       ),
       body: Center(
         child: Column(
