@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget {
     }//if
 
     //Create the (representative) request
-    final day = '2023-05-04';
+    final day = '2024-05-04';
     final url = Impact.baseUrl + Impact.stepsEndpoint + Impact.patientUsername + '/day/$day/';
     final headers = {HttpHeaders.authorizationHeader: 'Bearer $access'};
 
@@ -157,4 +157,5 @@ class HomePage extends StatelessWidget {
     return response.statusCode;
 
   } //_refreshTokens
+
 } //HomePage
