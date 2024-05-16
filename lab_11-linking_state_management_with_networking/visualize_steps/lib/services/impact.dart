@@ -43,10 +43,12 @@ class ImpactService {
 
   //This method allows to obtain the JWT token pair from IMPACT and store it in SharedPreferences
   static Future<int> refreshTokens() async {
+
     //Create the request
     final url = ImpactService.baseUrl + ImpactService.refreshEndpoint;
     final sp = await SharedPreferences.getInstance();
     final refresh = sp.getString('refresh');
+
     final body = {'refresh': refresh};
 
     //Get the respone

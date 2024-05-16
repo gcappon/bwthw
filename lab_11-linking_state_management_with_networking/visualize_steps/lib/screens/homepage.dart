@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   Provider.of<DataProvider>(context, listen: false)
-                      .fetchStepData('2023-05-04');
+                      .fetchStepData('2023-05-13');
                 },
                 child: Text('Fetch data')
             ),
