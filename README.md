@@ -12,5 +12,5 @@ Join the course Discord server to get in touch and ask questions: [https://disco
 For any problems, issues, or suggestions, contact us: 
 
 - Giacomo Cappon (Professor): giacomo.cappon@unipd.it
-- Luca Cossu (Tutor): luca.cossu@phd.unipd.it
-- Michele Atzeni (Tutor): michele.atzeni@phd.unipd.it
+- Luca Cossu (Tutor): luca.cossu@unipd.it
+- Alberto Gastaldello (Tutor): alberto.gastaldello.2@phd.unipd.it
