@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         //_example2(),
         //_example3(),
         //_example6(),
-        _example7(),
+        //_example7(),
         //_example14(),
         //_example18(),
         //_example19(),
