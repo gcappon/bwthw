@@ -16,5 +16,14 @@ class MyApp extends StatelessWidget {
           create: (context) => DataProvider(),
           child: HomePage()),
     );
+    /* Equivalent version with MultiProvider
+    return MaterialApp(
+        home: MultiProvider(
+          providers: [
+            Provider<DataProvider>(create: (_) => DataProvider()),
+          ],
+          child: HomePage()),
+    );
+    */
   } //build
 }//MyApp
