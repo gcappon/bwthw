@@ -1,4 +1,4 @@
-//Exercise 01.01. In the main function, given a number n, for all non-negative integers i < n, print i^4. 
+//In the main function, given a number n, for all non-negative integers i < n, print i^4. 
 //Do it using a for loop and a while loop.
 
 import 'dart:math';
