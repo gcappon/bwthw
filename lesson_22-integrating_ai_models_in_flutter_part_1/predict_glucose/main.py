@@ -8,79 +8,58 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
 
-DATA_PATH = "data/ReplaceBG.parquet"
-OUTPUT_DIR = "model"
-
-SAMPLING_MIN = 5
-HORIZON = int(30 / SAMPLING_MIN)
-
-# ============================================================
-# LOAD DATA
-# ============================================================
 print("---")
-print("Loading ReplaceBG dataset...")
-df = pd.read_parquet(DATA_PATH)
+print("Loading dataset...")
 
-# Keep only CGM, date, and id
+# Load data
+df = pd.read_parquet('data/ReplaceBG.parquet')
+
+# Keep only CGM, date, and id columns for simplicity
 df = df[["date", "CGM", "id"]]
 df["date"] = pd.to_datetime(df["date"])
 
-print(f"Loaded {len(df)} total rows")
-print(f"Number of subjects: {df['id'].nunique()}")
-
 print("---")
-# ============================================================
-# PROCESS EACH SUBJECT
-# ============================================================
-print("Creating X, Y matrices dividing by subject id...")
+print("Creating X, Y matrices ...")
 
-all_results = []
-
+# Get the list of patients that are present in the dataset
 patients = np.unique(df['id'])
+num_patients = len(patients)
 
+# Create an empty list that will contain all the processed data
 patients_list = []
 
-for patient in patients:
-
-    # --------------------------------------------
-    # Extract and sort
-    # --------------------------------------------
-    patient_df = df[df['id'] == patient].copy()
-    patient_df = patient_df.sort_values("date")
-
-    # --------------------------------------------
-    # Compute Rate of Change (mg/dL per minute)
-    # --------------------------------------------
-    # compute finite differences over 3-step intervals (assuming 15-minute spacing)
-
-    diffs = (patient_df.CGM.values[3:] - patient_df.CGM.values[:-3]) / 15
-
-    # prepend 3 NaNs to keep the array the same length
-    patient_df['ROC'] = np.concatenate([np.full(3, np.nan), diffs])
-
-    # append target
-    target_CGM = patient_df.CGM.values[HORIZON:]
-    # prepend 3 NaNs to keep the array the same length
-    patient_df['Y'] = np.concatenate([target_CGM, np.full(HORIZON, np.nan), ])
-
-    # Drop NA
-    patient_df = patient_df.dropna()
-
-    patients_list.append(patient_df)
-
+# Initialize the lists for training and test data
 X_train_list = []
 X_test_list = []
 Y_train_list = []
 Y_test_list = []
 
-num_patients = len(patients_list)
+# Identify the split point corresponding to 80% of total patients.
 split_idx = int(0.8 * num_patients)  # 80% for training
 
-for i, patient_df in enumerate(patients_list):
+for i, patient in enumerate(patients):
+
+    # Extract the patient-specific data, put them in a dataframe and sort rows by timestamp
+    patient_df = df[df['id'] == patient].copy()
+    patient_df = patient_df.sort_values("date")
+
+    # As an additional feature, let's compute the glucose rate-of-change (in the last 15 minutes)
+    diffs = (patient_df.CGM.values[3:] - patient_df.CGM.values[:-3]) / 15
+
+    # Prepend 3 NaNs to keep the array the same length and put it in the dataframe
+    patient_df['ROC'] = np.concatenate([np.full(3, np.nan), diffs])
+
+    # Create the target vector shifting it by 6 samples (i.e., 30 minutes)
+    target_CGM = patient_df.CGM.values[6:]
+
+    # prepend 6 NaNs to keep the array the same length and put it in the dataframe
+    patient_df['Y'] = np.concatenate([target_CGM, np.full(6, np.nan), ])
+
+    # Drop NA (this is for simplicity)
+    patient_df = patient_df.dropna()
+
+    # Get the final features
     cgm = patient_df['CGM'].values
     roc = patient_df['ROC'].values
     y = patient_df['Y'].values  # replace 'Y' with your actual target column
@@ -103,35 +82,35 @@ Y_train = np.concatenate(Y_train_list, axis=0)
 Y_test = np.concatenate(Y_test_list, axis=0)
 
 print("---")
-
 print("Training and evaluating model")
 
-# Linear regression pipeline
-model = make_pipeline(
-    StandardScaler(),
-    LinearRegression()
-)
+# Create a pipeline for linear regression
+model = make_pipeline(StandardScaler(), LinearRegression())
 
+# Train the model
 model.fit(X_train, Y_train)
+
+# Get the predictions
 y_pred = model.predict(X_test)
 
-# Evaluation
+# Evaluate model performance
 rmse = np.sqrt(mean_squared_error(Y_test, y_pred))
 r2 = r2_score(Y_test, y_pred)
 
 print(f"RMSE : {rmse:.2f} mg/dL")
 print(f"R²   : {r2:.3f}")
+
 print("---")
+print("Exporting model...")
 
-# --------------------------------------------
-# EXPORT MODEL
-# --------------------------------------------
+# Create output directory if it does not exist
+os.makedirs('model', exist_ok=True)
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
+# Get the scaler and regression model objects
 scaler = model.named_steps["standardscaler"]
 reg = model.named_steps["linearregression"]
 
+# Create the dictionary to be exported
 export_dict = {
     "feature_names": ["CGM", "ROC"],
     "mean": scaler.mean_.tolist(),
@@ -140,14 +119,9 @@ export_dict = {
     "intercept": float(reg.intercept_)
 }
 
-output_path = os.path.join(
-    OUTPUT_DIR,
-    "cgm_forecast.json"
-)
-
-with open(output_path, "w") as f:
+# Export models
+with open('model', 'cgm_forcast.json' , "w") as f:
     json.dump(export_dict, f, indent=4)
 
-print(f"Model exported to {output_path}")
+print("Model exported")
 print("---")
-
