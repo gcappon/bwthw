@@ -6,6 +6,7 @@ class DataProvider extends ChangeNotifier {
 
   //This serves as database of the application
   List<StepData> stepData = [];
+  
 
   //Method to fetch step data from the server
   void fetchStepData(String day) async {

@@ -120,7 +120,7 @@ export_dict = {
 }
 
 # Export models
-with open('model', 'cgm_forcast.json' , "w") as f:
+with open(os.path.join('model', 'cgm_forcast.json'), "w") as f:
     json.dump(export_dict, f, indent=4)
 
 print("Model exported")
